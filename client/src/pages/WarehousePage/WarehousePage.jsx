@@ -24,7 +24,7 @@ class WarehouseMainDisplay extends Component {
 
     deleteWarehouse = (id) => {
         axios
-            .delete(`${URL}/api/warehouses/${id}`)
+            .delete(`${URL}/warehouses/${id}`)
             .then(res => {
                 this.hideModal()
                 getWarehouses()
@@ -52,7 +52,7 @@ class WarehouseMainDisplay extends Component {
 
     componentDidMount() {
         axios
-            .get(`${URL}/api/warehouses`)
+            .get(`${URL}/warehouses`)
             .then(res => res.data)
             .then(data => {
                 this.setState({
@@ -72,7 +72,7 @@ class WarehouseMainDisplay extends Component {
     componentDidUpdate = () => {
         if(this.state.isUpdated) {
             axios
-                .get(`${URL}/api/warehouses`)
+                .get(`${URL}/warehouses`)
                 .then(res => res.data)
                 .then(data => {
                     this.setState({
@@ -83,6 +83,7 @@ class WarehouseMainDisplay extends Component {
                 .catch(error => console.log(error))
         }
     }
+
 
     render() {
       

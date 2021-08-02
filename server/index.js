@@ -24,3 +24,7 @@ app.use('/api', inventoryRoutes);
 app.listen(port, () => {
     console.log(`App is running on port ${port}`);
 });
+
+app.get('/', (req, res) => {
+    res.send("Hello world")
+})

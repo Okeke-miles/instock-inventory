@@ -10,7 +10,7 @@ import "./WarehousePage.scss"
 import Modal from "../../components/Modal/Modal"
 import InventoryDetail from "../../components/InventoryDetail/InventoryDetail"
 import InventoryForm from "../../components/InventoryForm/InventoryForm"
-import { getWarehouses } from '../../utils/api';
+import { getWarehouses, URL } from '../../utils/api';
 
 
 class WarehouseMainDisplay extends Component {
@@ -24,7 +24,7 @@ class WarehouseMainDisplay extends Component {
 
     deleteWarehouse = (id) => {
         axios
-            .delete(`/api/warehouses/${id}`)
+            .delete(`${URL}/api/warehouses/${id}`)
             .then(res => {
                 this.hideModal()
                 getWarehouses()
@@ -52,7 +52,7 @@ class WarehouseMainDisplay extends Component {
 
     componentDidMount() {
         axios
-            .get(`/api/warehouses`)
+            .get(`${URL}/api/warehouses`)
             .then(res => res.data)
             .then(data => {
                 this.setState({
@@ -72,7 +72,7 @@ class WarehouseMainDisplay extends Component {
     componentDidUpdate = () => {
         if(this.state.isUpdated) {
             axios
-                .get(`/api/warehouses`)
+                .get(`${URL}/api/warehouses`)
                 .then(res => res.data)
                 .then(data => {
                     this.setState({

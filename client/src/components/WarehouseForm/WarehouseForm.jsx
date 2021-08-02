@@ -2,7 +2,7 @@ import { Component } from 'react'
 import axios from 'axios'
 import MainHeader from '../MainHeader/MainHeader'
 import errorIcon from '../../assets/Icons/error-24px.svg'
-import {addWarehouse} from "../../utils/api"
+import {addWarehouse, URL} from "../../utils/api"
 import './WarehouseForm.scss'
 
 class WarehouseForm extends Component {
@@ -23,7 +23,7 @@ class WarehouseForm extends Component {
     componentDidMount(){
         if (this.props.match.params.warehousesId){
             axios
-                .get(`/api/warehouses/${this.props.match.params.warehousesId}`)
+                .get(`${URL}/warehouses/${this.props.match.params.warehousesId}`)
                 .then(res => {
                     this.setState({data:{
                         name:res.data.name,
@@ -106,7 +106,7 @@ class WarehouseForm extends Component {
                 if (name && address && city && country && contactName && position && phone && email){
                     
                     axios
-                        .put(`/api/warehouses/${this.props.match.params.warehousesId}`,{
+                        .put(`${URL}/warehouses/${this.props.match.params.warehousesId}`,{
                             "name":this.state.data.name,
                             "address":this.state.data.address,
                             "city":this.state.data.city,
